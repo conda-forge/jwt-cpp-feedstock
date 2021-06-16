@@ -9,13 +9,17 @@ cmake \
 	${SRC_DIR} \
 	${CMAKE_ARGS} \
 	-DCMAKE_BUILD_TYPE:STRING=Release \
-	-DJWT_BUILD_EXAMPLES:BOOL=FALSE \
-	-DJWT_BUILD_TESTS:BOOL=FALSE \
-	-DJWT_EXTERNAL_PICOJSON:BOOL=TRUE \
+	-DBUILD_TESTS:BOOL=TRUE \
+	-DEXTERNAL_PICOJSON:BOOL=TRUE \
 ;
 
 # build
 cmake --build . --verbose --parallel ${CPU_COUNT}
+
+# test
+if [[ "${CONDA_BUILD_CROSS_COMPILATION}" != "1" ]]; then
+./tests/jwt-cpp-test
+fi
 
 # install
 cmake --build . --verbose --parallel ${CPU_COUNT} --target install
