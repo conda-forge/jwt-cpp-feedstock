@@ -1,5 +1,5 @@
 {% set name = "jwt-cpp" %}
-{% set version = "0.5.0" %}
+{% set version = "0.5.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 079a273f070dd11213e301712319a65881e51ab81535cc436d5313191df852a2
+  sha256: d8f5ffb361824630b3b6f4aad26c730c915081071040c232ac57947d6177ef4f
   patches:
     # install cmake config files into lib/cmake/
     - cmake-config-install-dir.patch
