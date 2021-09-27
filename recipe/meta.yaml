@@ -19,7 +19,7 @@ build:
     # we only need the compiler for the test suite
     - libgcc-ng  # [unix]
     - libstdcxx-ng  # [unix]
-  number: 0
+  number: 1
 
 requirements:
   build:
