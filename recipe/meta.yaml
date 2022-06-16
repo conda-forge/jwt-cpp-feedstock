@@ -32,6 +32,8 @@ requirements:
     - gtest  # [unix]
     - openssl
     - picojson
+  run:
+    - picojson
 
 test:
   commands:
