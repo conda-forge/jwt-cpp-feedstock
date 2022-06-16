@@ -1,5 +1,5 @@
 {% set name = "jwt-cpp" %}
-{% set version = "0.5.1" %}
+{% set version = "0.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: d8f5ffb361824630b3b6f4aad26c730c915081071040c232ac57947d6177ef4f
+  sha256: 0227bd6e0356b211341075c7997c837f0b388c01379bd256aa525566a5553f03
   patches:
     # don't use find_package for picojson, we know we have it
     - external-picojson.patch
@@ -19,7 +19,7 @@ build:
     # we only need the compiler for the test suite
     - libgcc-ng  # [unix]
     - libstdcxx-ng  # [unix]
-  number: 2
+  number: 0
 
 requirements:
   build:
