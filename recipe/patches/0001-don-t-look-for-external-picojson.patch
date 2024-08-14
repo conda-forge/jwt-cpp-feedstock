@@ -1,4 +1,4 @@
-From bc79ad63b636f7b979b35bad0997b424ebe6f46f Mon Sep 17 00:00:00 2001
+From f468e7c8d83d66dbf45f5d1d9f57585d4204da85 Mon Sep 17 00:00:00 2001
 From: Duncan Macleod <duncan.macleod@ligo.org>
 Date: Wed, 5 May 2021 12:26:05 +0100
 Subject: [PATCH 1/2] don't look for external picojson
@@ -8,17 +8,17 @@ Subject: [PATCH 1/2] don't look for external picojson
  1 file changed, 4 deletions(-)
 
 diff --git a/CMakeLists.txt b/CMakeLists.txt
-index f9d07ee..2998eae 100644
+index 5cd876f..695bbf0 100644
 --- a/CMakeLists.txt
 +++ b/CMakeLists.txt
-@@ -58,10 +58,6 @@ elseif(${JWT_SSL_LIBRARY} MATCHES "wolfSSL")
-   list(TRANSFORM wolfssl_INCLUDE_DIRS APPEND "/wolfssl") # This is required to access OpenSSL compatability API
+@@ -62,10 +62,6 @@ elseif(${JWT_SSL_LIBRARY} MATCHES "wolfSSL")
+   list(TRANSFORM wolfssl_INCLUDE_DIRS APPEND "/wolfssl") # This is required to access OpenSSL compatibility API
  endif()
  
 -if(JWT_EXTERNAL_PICOJSON)
 -  find_package(picojson 1.3.0 REQUIRED)
 -endif()
 -
- set(JWT_INCLUDE_PATH ${CMAKE_CURRENT_SOURCE_DIR}/include)
- set(JWT_HEADER_FILES ${JWT_INCLUDE_PATH}/jwt-cpp/jwt.h)
- foreach(traits ${JWT_JSON_TRAITS_OPTIONS})
+ find_package(nlohmann_json CONFIG)
+ 
+ if(NOT nlohmann_json_FOUND)
