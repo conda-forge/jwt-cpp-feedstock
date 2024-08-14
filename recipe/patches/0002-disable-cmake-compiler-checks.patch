@@ -1,0 +1,22 @@
+From b1f9bb743c209a5dc489b8b5ba0b8f43761c1d23 Mon Sep 17 00:00:00 2001
+From: Duncan Macleod <duncan.macleod@ligo.org>
+Date: Wed, 5 May 2021 12:26:05 +0100
+Subject: [PATCH 2/2] disable cmake compiler checks
+
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2998eae..9ea1786 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -9,7 +9,7 @@ if(HUNTER_ENABLED)
+   message(STATUS "jwt-cpp: using hunter for dependency resolution")
+ endif()
+ 
+-project(jwt-cpp)
++project(jwt-cpp NONE)
+ 
+ option(JWT_BUILD_EXAMPLES "Configure CMake to build examples (or not)" ON)
+ option(JWT_BUILD_TESTS "Configure CMake to build tests (or not)" OFF)
