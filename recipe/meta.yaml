@@ -16,9 +16,9 @@ source:
 
 build:
   ignore_run_exports:
-    # we only need the compiler for the test suite
-    - libgcc-ng  # [unix]
-    - libstdcxx-ng  # [unix]
+    # package is header-only
+    - {{ stdlib('c') }}
+    - {{ compiler('cxx') }}
   number: 0
 
 requirements:
