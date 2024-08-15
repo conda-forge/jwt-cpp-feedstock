@@ -15,6 +15,8 @@ source:
     - patches/0002-disable-cmake-compiler-checks.patch      # [win]
 
 build:
+  error_overdepending: true
+  error_overlinking: true
   ignore_run_exports:
     # package is header-only
     - {{ stdlib('c') }}
@@ -31,6 +33,7 @@ requirements:
   host:
     - gmock  # [unix]
     - gtest  # [unix]
+    - nlohmann_json
     - openssl
     - picojson
   run:
