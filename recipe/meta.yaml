@@ -1,5 +1,5 @@
 {% set name = "jwt-cpp" %}
-{% set version = "0.6.0" %}
+{% set version = "0.7.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,22 +7,25 @@ package:
 
 source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 0227bd6e0356b211341075c7997c837f0b388c01379bd256aa525566a5553f03
+  sha256: b9eb270e3ba8221e4b2bc38723c9a1cb4fa6c241a42908b9a334daff31137406
   patches:
     # don't use find_package for picojson, we know we have it
-    - external-picojson.patch
+    - patches/0001-don-t-look-for-external-picojson.patch
     # disable cmake compiler checks on windows
-    - cmake-no-compiler.patch  # [win]
+    - patches/0002-disable-cmake-compiler-checks.patch      # [win]
 
 build:
+  error_overdepending: true
+  error_overlinking: true
   ignore_run_exports:
-    # we only need the compiler for the test suite
-    - libgcc-ng  # [unix]
-    - libstdcxx-ng  # [unix]
+    # package is header-only
+    - {{ stdlib('c') }}
+    - {{ compiler('cxx') }}
   number: 0
 
 requirements:
   build:
+    - {{ stdlib('c') }}  # [unix]
     - {{ compiler('cxx') }}  # [unix]
     - cmake
     - make  # [unix]
@@ -30,6 +33,7 @@ requirements:
   host:
     - gmock  # [unix]
     - gtest  # [unix]
+    - nlohmann_json
     - openssl
     - picojson
   run:
