@@ -1,5 +1,5 @@
 {% set name = "jwt-cpp" %}
-{% set version = "0.7.0" %}
+{% set version = "0.7.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: b9eb270e3ba8221e4b2bc38723c9a1cb4fa6c241a42908b9a334daff31137406
+  sha256: d45894f57437ce45233cfe0e07383c4e1f32f969edfd8df8347e177b13bf74e5
   patches:
     # don't use find_package for picojson, we know we have it
     - patches/0001-don-t-look-for-external-picojson.patch
