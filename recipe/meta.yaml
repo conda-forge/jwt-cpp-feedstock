@@ -1,16 +1,13 @@
 {% set name = "jwt-cpp" %}
-{% set version = "0.7.0" %}
+{% set version = "0.7.1" %}
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: {{ version }}a1
 
 source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: b9eb270e3ba8221e4b2bc38723c9a1cb4fa6c241a42908b9a334daff31137406
-  patches:
-    # disable cmake compiler checks on windows
-    - patches/0001-disable-cmake-compiler-checks.patch      # [win]
+  sha256: e52f247d5e62fac5da6191170998271a70ce27f747f2ce8fde9b09f96a5375a4
 
 build:
   error_overdepending: true
@@ -23,8 +20,8 @@ build:
 
 requirements:
   build:
-    - {{ stdlib('c') }}  # [unix]
-    - {{ compiler('cxx') }}  # [unix]
+    - {{ stdlib('c') }}
+    - {{ compiler('cxx') }}
     - cmake
     - make  # [unix]
     - ninja  # [win]
