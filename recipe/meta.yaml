@@ -31,9 +31,6 @@ requirements:
     - make  # [unix]
     - ninja  # [win]
   host:
-    - gmock  # [unix]
-    - gtest  # [unix]
-    - nlohmann_json
     - openssl
     - picojson
   run:
