@@ -9,10 +9,8 @@ source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: b9eb270e3ba8221e4b2bc38723c9a1cb4fa6c241a42908b9a334daff31137406
   patches:
-    # don't use find_package for picojson, we know we have it
-    - patches/0001-don-t-look-for-external-picojson.patch
     # disable cmake compiler checks on windows
-    - patches/0002-disable-cmake-compiler-checks.patch      # [win]
+    - patches/0001-disable-cmake-compiler-checks.patch      # [win]
 
 build:
   error_overdepending: true
@@ -32,9 +30,9 @@ requirements:
     - ninja  # [win]
   host:
     - openssl
-    - picojson
+    - picojson >=1.3.0 # build 1 or greater
   run:
-    - picojson
+    - picojson >=1.3.0 # build 1 or greater
 
 test:
   commands:
