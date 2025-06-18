@@ -3,7 +3,7 @@
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}a1
+  version: {{ version }}
 
 source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
