@@ -1,0 +1,37 @@
+From 357bb892d10be05958bd573fc7d5f01c09483f09 Mon Sep 17 00:00:00 2001
+From: Eero Aaltonen <eero.aaltonen@vaisala.com>
+Date: Wed, 18 Jun 2025 18:17:05 +0300
+Subject: [PATCH] Remove greater than sign from link interface
+
+Fixes error
+```
+  The link interface of target "jwt-cpp::jwt-cpp" contains:
+
+    picojson::picojson>
+
+  but the target was not found.  Possible reasons include:
+
+    * There is a typo in the target name.
+    * A find_package call is missing for an IMPORTED target.
+    * An ALIAS target is missing.
+```
+---
+ CMakeLists.txt | 2 +-
+ 1 file changed, 1 insertion(+), 1 deletion(-)
+
+diff --git a/CMakeLists.txt b/CMakeLists.txt
+index 2520e4e..3718fc5 100644
+--- a/CMakeLists.txt
++++ b/CMakeLists.txt
+@@ -132,7 +132,7 @@ if(${JWT_SSL_LIBRARY} MATCHES "wolfSSL")
+ endif()
+ 
+ if(NOT JWT_DISABLE_PICOJSON AND JWT_EXTERNAL_PICOJSON)
+-  target_link_libraries(jwt-cpp INTERFACE picojson::picojson>)
++  target_link_libraries(jwt-cpp INTERFACE picojson::picojson)
+ endif()
+ 
+ # Hunter needs relative paths so the files are placed correctly
+-- 
+2.34.1
+
