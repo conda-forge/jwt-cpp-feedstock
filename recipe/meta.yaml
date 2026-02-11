@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
   sha256: 6e815d86c168eb521a27937d603747dec0ca3c39ffc12d6fa72e2cf78a5b02d2
-  patches:
-    - patches/0001-Remove-greater-than-sign-from-link-interface.patch
 
 build:
   error_overdepending: true
