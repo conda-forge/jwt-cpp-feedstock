@@ -1,5 +1,5 @@
 {% set name = "jwt-cpp" %}
-{% set version = "0.7.0" %}
+{% set version = "0.7.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,9 @@ package:
 
 source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: b9eb270e3ba8221e4b2bc38723c9a1cb4fa6c241a42908b9a334daff31137406
+  sha256: e52f247d5e62fac5da6191170998271a70ce27f747f2ce8fde9b09f96a5375a4
   patches:
-    # don't use find_package for picojson, we know we have it
-    - patches/0001-don-t-look-for-external-picojson.patch
-    # disable cmake compiler checks on windows
-    - patches/0002-disable-cmake-compiler-checks.patch      # [win]
+    - patches/0001-Remove-greater-than-sign-from-link-interface.patch
 
 build:
   error_overdepending: true
@@ -25,19 +22,16 @@ build:
 
 requirements:
   build:
-    - {{ stdlib('c') }}  # [unix]
-    - {{ compiler('cxx') }}  # [unix]
+    - {{ stdlib('c') }}
+    - {{ compiler('cxx') }}
     - cmake
     - make  # [unix]
     - ninja  # [win]
   host:
-    - gmock  # [unix]
-    - gtest  # [unix]
-    - nlohmann_json
     - openssl
-    - picojson
+    - picojson >=1.3.0 # build 1 or greater
   run:
-    - picojson
+    - picojson >=1.3.0 # build 1 or greater
 
 test:
   commands:
