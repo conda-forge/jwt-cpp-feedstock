@@ -13,7 +13,6 @@ Development: https://github.com/Thalhammer/jwt-cpp
 
 A header only library for creating and validating JSON Web Tokens in C++11.
 
-
 Current build status
 ====================
 
