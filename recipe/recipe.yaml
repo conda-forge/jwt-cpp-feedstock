@@ -1,0 +1,59 @@
+schema_version: 1
+
+context:
+  version: "0.7.3"
+
+package:
+  name: jwt-cpp
+  version: ${{ version }}
+
+source:
+  url: https://github.com/Thalhammer/jwt-cpp/archive/v${{ version }}.tar.gz
+  sha256: d24f49f05e18f283935f511af0f62f73a042d512123a1865a8ce929f56a52735
+
+build:
+  dynamic_linking:
+    overdepending_behavior: error
+  number: 0
+
+requirements:
+  build:
+    - ${{ stdlib('c') }}
+    - ${{ compiler('cxx') }}
+    - cmake
+    - if: unix
+      then: make
+      else: ninja
+  host:
+    - openssl
+    - picojson >=1.3.0  # build 1 or greater
+  run:
+    - picojson >=1.3.0  # build 1 or greater
+  ignore_run_exports:
+    from_package:
+      - ${{ stdlib('c') }}
+      - ${{ compiler('cxx') }}
+      - openssl
+
+tests:
+  - package_contents:
+      files:
+        - if: win
+          then: Library/lib/cmake/jwt-cpp/jwt-cpp-config.cmake
+          else: lib/cmake/jwt-cpp/jwt-cpp-config.cmake
+      include:
+        - jwt-cpp/jwt.h
+
+about:
+  summary: A header only library for creating and validating json web tokens in c++
+  description: |
+    A header only library for creating and validating JSON Web Tokens in C++11.
+  homepage: https://thalhammer.it/projects/jwt_cpp
+  repository: https://github.com/Thalhammer/jwt-cpp
+  license: MIT
+  license_file: LICENSE
+
+extra:
+  recipe-maintainers:
+    - duncanmmacleod
+    - eaaltonen
