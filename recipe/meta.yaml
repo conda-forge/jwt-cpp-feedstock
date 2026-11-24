@@ -1,5 +1,5 @@
 {% set name = "jwt-cpp" %}
-{% set version = "0.7.2" %}
+{% set version = "0.7.3" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/Thalhammer/{{ name }}/archive/v{{ version }}.tar.gz
-  sha256: 6e815d86c168eb521a27937d603747dec0ca3c39ffc12d6fa72e2cf78a5b02d2
+  sha256: d24f49f05e18f283935f511af0f62f73a042d512123a1865a8ce929f56a52735
 
 build:
   error_overdepending: true
